@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
+   <right>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="91.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/lock-01.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="13.0" fitWidth="15.0" layoutX="92.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/user-01.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="usernameTxt" focusTraversable="false" layoutX="113.0" layoutY="205.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="passwdTxt" focusTraversable="false" layoutX="113.0" layoutY="267.0" onKeyPressed="#input" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="loginBtn" layoutX="148.0" layoutY="350.0" mnemonicParsing="false" onAction="#loginm" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #0598ff;" text="Login" textFill="WHITE" />
+            <Label layoutX="78.0" layoutY="447.0" text="Don't have an account?" textFill="#0598ff" />
+            <Hyperlink layoutX="204.0" layoutY="444.0" text="Sign up here!" />
+            <Text fill="#0598ff" layoutX="136.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Label fx:id="errorLbl" layoutX="102.0" layoutY="313.0" text="Incorrect Username or Password!" textAlignment="CENTER" textFill="#cd3030" visible="false" />
+            <ImageView fitHeight="50.0" fitWidth="65.0" layoutX="155.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/users-01.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="72.0" fitWidth="55.0" layoutX="148.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/laundry.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
