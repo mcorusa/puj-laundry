@@ -87,7 +87,6 @@ public class Employee extends Table {
     }
 
 
-
     public static List<Employee> select(){
         ObservableList<Employee> employees = FXCollections.observableArrayList();
         try {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2020 at 10:52 PM
+-- Generation Time: May 31, 2020 at 09:15 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -40,13 +40,13 @@ CREATE TABLE `cycle` (
 --
 
 INSERT INTO `cycle` (`id`, `type`, `duration`, `price`) VALUES
-(1, 'Gentle or Hand Wash', 50, 2),
-(2, 'Quick', 17, 1),
-(3, 'Whites', 180, 4),
-(4, 'Cotton Bright', 160, 3),
-(5, 'Bedding', 50, 5),
-(6, 'Wool', 40, 2),
-(7, 'Drying', 100, 5);
+(1, 'Quick', 17, 1),
+(2, 'Wool', 40, 2),
+(3, 'Cotton Bright', 160, 3),
+(4, 'Gentle Hand Wash', 50, 2),
+(5, 'Whites', 180, 3),
+(6, 'Heavy Bedding', 60, 3),
+(7, 'Dry', 120, 2);
 
 -- --------------------------------------------------------
 
@@ -66,24 +66,17 @@ CREATE TABLE `cycleonmachine` (
 --
 
 INSERT INTO `cycleonmachine` (`id`, `description`, `cycleFk`, `machineFk`) VALUES
-(1, 'Gentle or Hand Wash on SAMSUNG WW80M6', 1, 1),
-(2, 'Quick on SAMSUNG WW80M6', 2, 1),
-(3, 'Whites on SAMSUNG WW80M6', 3, 1),
-(4, 'Cotton Bright on SAMSUNG WW80M6', 4, 1),
-(5, 'Bedding on SAMSUNG WW80M6', 5, 1),
-(6, 'Wool on SAMSUNG WW80M6', 6, 1),
-(7, 'Drying on SAMSUNG WW80M6', 7, 1),
-(8, 'Gentle or Hand Wash on GORENJE WS168', 1, 2),
-(9, 'Quick on GORENJE WS168', 2, 2),
-(10, 'Whites on GORENJE WS168', 3, 2),
-(11, 'Cotton Bright on GORENJE WS168', 4, 2),
-(12, 'Gentle or Hand Wash on GORENJE WA844', 1, 3),
-(13, 'Quick on GORENJE WA844', 2, 3),
-(14, 'Whites on GORENJE WA844', 3, 3),
-(15, 'Cotton Bright on GORENJE WA844', 4, 3),
-(16, 'Bedding on GORENJE WA844', 5, 3),
-(17, 'Wool on GORENJE WA844', 6, 3),
-(18, 'Drying on GORENJE WA844', 7, 3);
+(1, 'Quick on Samsung', 1, 1),
+(2, 'Wool on Samsung', 2, 1),
+(3, 'Cotton Bright on Samsung', 3, 1),
+(4, 'Wool on Quadro', 2, 2),
+(5, 'Cotton Bright on Quadro', 3, 2),
+(6, 'Gentle Hand Wash on Samsung', 4, 1),
+(7, 'Gentle Hand Wash on Quadro', 4, 2),
+(8, 'Whites on Samsung', 5, 1),
+(9, 'Whites on Quadro', 5, 2),
+(10, 'Heavy Bedding on Samsung', 6, 1),
+(11, 'Dry on Bosch', 7, 3);
 
 -- --------------------------------------------------------
 
@@ -106,10 +99,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `role`) VALUES
-(1, 'Julija', 'Markić', 'jmarkic@dom.ba', 'jmarkic', '1234', 'zaposlenik'),
-(2, 'Ivanka', 'Pavić', 'ipavic@dom.ba', 'ipavic', '1234', 'zaposlenik'),
-(3, 'Marko', 'Jurić', 'mjuric@dom.ba', 'mjuric', '1234', 'zaposlenik'),
-(4, NULL, NULL, NULL, 'admin', 'admin', 'admin');
+(1, NULL, NULL, NULL, 'admin', 'admin', 'admin'),
+(2, 'Julija', 'Markić', 'jmarkic@laundry.ba', 'jmarkic', '1234', 'zaposlenik'),
+(3, 'Ivanka', 'Pavić', 'ipavic@laundry.ba', 'ipavic', '1234', 'zaposlenik'),
+(4, 'Marko', 'Jurić', 'mjuric@dom.ba', 'mjuric', '1234', 'zaposlenik');
 
 -- --------------------------------------------------------
 
@@ -127,9 +120,9 @@ CREATE TABLE `machine` (
 --
 
 INSERT INTO `machine` (`id`, `model`) VALUES
-(1, 'SAMSUNG WW80M6'),
-(2, 'GORENJE WS168'),
-(3, 'GORENJE WA844');
+(1, 'Samsung'),
+(2, 'Quadro'),
+(3, 'Bosch');
 
 -- --------------------------------------------------------
 
@@ -139,7 +132,8 @@ INSERT INTO `machine` (`id`, `model`) VALUES
 
 CREATE TABLE `reservation` (
   `id` int(32) NOT NULL,
-  `appointmentDate` timestamp(6) NULL DEFAULT NULL,
+  `appointmentDateStart` datetime(6) DEFAULT NULL,
+  `appointmentDateEnd` datetime(6) DEFAULT NULL,
   `studentFk` int(32) NOT NULL,
   `employeeFk` int(32) NOT NULL,
   `cycleonmachineFk` int(32) NOT NULL
@@ -149,14 +143,24 @@ CREATE TABLE `reservation` (
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `appointmentDate`, `studentFk`, `employeeFk`, `cycleonmachineFk`) VALUES
-(1, '2020-05-25 11:00:00.000000', 4, 2, 1),
-(6, '2020-05-06 22:00:00.000000', 3, 3, 1),
-(14, '2020-05-17 22:00:00.000000', 3, 3, 7),
-(15, '2020-06-03 22:00:00.000000', 6, 3, 2),
-(16, '2020-05-04 22:00:00.000000', 7, 1, 16),
-(17, '2020-04-28 22:00:00.000000', 5, 3, 15),
-(18, '2020-05-12 22:00:00.000000', 7, 1, 3);
+INSERT INTO `reservation` (`id`, `appointmentDateStart`, `appointmentDateEnd`, `studentFk`, `employeeFk`, `cycleonmachineFk`) VALUES
+(1, '2020-06-02 07:00:00.000000', '2020-06-02 07:17:00.000000', 1, 3, 1),
+(2, '2020-05-26 07:00:00.000000', '2020-05-26 07:17:00.000000', 1, 2, 1),
+(3, '2020-06-10 07:00:00.000000', '2020-06-10 07:17:00.000000', 1, 2, 1),
+(4, '2020-06-03 08:00:00.000000', '2020-06-03 08:17:00.000000', 1, 3, 1),
+(5, '2020-06-08 08:00:00.000000', '2020-06-08 10:40:00.000000', 5, 2, 3),
+(6, '2020-06-08 10:41:00.000000', '2020-06-08 12:41:00.000000', 5, 2, 11),
+(7, '2020-06-03 09:00:00.000000', '2020-06-03 09:50:00.000000', 5, 2, 7),
+(8, '2020-06-11 12:00:00.000000', '2020-06-11 13:00:00.000000', 5, 2, 10),
+(9, '2020-05-30 12:00:00.000000', '2020-05-30 15:00:00.000000', 10, 2, 8),
+(10, '2020-06-05 11:00:00.000000', '2020-06-05 14:00:00.000000', 7, 2, 9),
+(11, '2020-05-06 14:00:00.000000', '2020-05-06 16:00:00.000000', 7, 2, 11),
+(12, '2020-06-03 14:00:00.000000', '2020-06-03 16:40:00.000000', 6, 2, 5),
+(13, '2020-06-03 17:00:00.000000', '2020-06-03 19:00:00.000000', 6, 2, 11),
+(14, '2020-06-06 15:00:00.000000', '2020-06-06 17:00:00.000000', 6, 2, 11),
+(15, '2020-06-01 12:00:00.000000', '2020-06-01 12:40:00.000000', 8, 2, 4),
+(16, '2020-06-01 12:15:00.000000', '2020-06-01 12:55:00.000000', 7, 2, 2),
+(17, '2020-05-06 11:00:00.000000', '2020-05-06 13:00:00.000000', 4, 2, 11);
 
 -- --------------------------------------------------------
 
@@ -176,14 +180,17 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `lastname`, `telephone`) VALUES
-(1, 'Hrvoje', 'Gabrić', '11111'),
-(2, 'Ivana', 'Kraljević', '22222'),
-(3, 'Mile', 'Kovačević', '33333'),
-(4, 'Monika', 'Raguž', '44444'),
-(5, 'Marija', 'Čule', '888111'),
-(6, 'Marina', 'Nikolić', '010101'),
-(7, 'Franjo', 'Topić', '000987'),
-(8, 'Tina', 'Maze', '557893');
+(1, 'Ivana', 'Kraljević', '777444'),
+(2, 'Hrvoje', 'Gabrić', '111999'),
+(3, 'Mile', 'Kovačević', '333558'),
+(4, 'Nina', 'Džeko', '777432'),
+(5, 'Tina', 'Maze', '111555'),
+(6, 'Marina', 'Nikolić', '063333'),
+(7, 'Marko', 'Miletić', '43434'),
+(8, 'Mihael', 'Marijanović', '77765'),
+(9, 'Martina', 'Tomić', '3456'),
+(10, 'Luka', 'Kovač', '963456'),
+(11, 'Boris', 'Lalić', '303030');
 
 --
 -- Indexes for dumped tables
@@ -200,8 +207,8 @@ ALTER TABLE `cycle`
 --
 ALTER TABLE `cycleonmachine`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `CycleOnMachine_Cycle_FK_1_cycleFk` (`cycleFk`),
-  ADD KEY `CycleOnMachine_Machine_FK_2_machineFk` (`machineFk`);
+  ADD KEY `constraintmachine` (`machineFk`),
+  ADD KEY `constraintcyclefk` (`cycleFk`);
 
 --
 -- Indexes for table `employee`
@@ -238,37 +245,37 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `cycle`
 --
 ALTER TABLE `cycle`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cycleonmachine`
 --
 ALTER TABLE `cycleonmachine`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `machine`
 --
 ALTER TABLE `machine`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -278,8 +285,8 @@ ALTER TABLE `student`
 -- Constraints for table `cycleonmachine`
 --
 ALTER TABLE `cycleonmachine`
-  ADD CONSTRAINT `CycleOnMachine_Cycle_FK_1_cycleFk` FOREIGN KEY (`cycleFk`) REFERENCES `cycle` (`id`),
-  ADD CONSTRAINT `CycleOnMachine_Machine_FK_2_machineFk` FOREIGN KEY (`machineFk`) REFERENCES `machine` (`id`);
+  ADD CONSTRAINT `constraintcyclefk` FOREIGN KEY (`cycleFk`) REFERENCES `cycle` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `constraintmachine` FOREIGN KEY (`machineFk`) REFERENCES `machine` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `reservation`

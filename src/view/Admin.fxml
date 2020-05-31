@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Admin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Admin">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffff;">
          <left>
@@ -26,18 +26,36 @@
                         <Image url="@../image/laundry.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
+               </children>
+            </Pane>
          </left>
          <center>
             <StackPane fx:id="Spane1" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane fx:id="Pn5reports" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
+                  <Pane fx:id="Pn3student" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
                      <children>
-                        <AnchorPane prefHeight="500.0" prefWidth="520.0">
+                        <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="522.0">
                            <children>
-                              <Button fx:id="BtnBack5" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+                              <TableView fx:id="tableStudent" layoutX="32.0" layoutY="218.0" prefHeight="272.0" prefWidth="347.0">
+                                 <columns>
+                                    <TableColumn fx:id="columnStudentName" onEditCommit="#editFirstnameStudent" prefWidth="114.0" text="Name" />
+                                    <TableColumn fx:id="columnStudentLastname" onEditCommit="#editLastnameStudent" prefWidth="122.0" text="Last name" />
+                                    <TableColumn fx:id="columnStudentTelephone" onEditCommit="#editTelephoneStudent" prefWidth="110.0" text="Telephone" />
+                                 </columns>
+                              </TableView>
+                              <TextField fx:id="txtSname" layoutX="154.0" layoutY="67.0" prefHeight="25.0" prefWidth="223.0" promptText="Name" />
+                              <TextField fx:id="txtSlastname" layoutX="154.0" layoutY="102.0" prefHeight="25.0" prefWidth="223.0" promptText="Lastname" />
+                              <TextField fx:id="txtStelephone" layoutX="154.0" layoutY="137.0" prefHeight="25.0" prefWidth="223.0" promptText="Telephone" />
+                              <Label layoutX="155.0" layoutY="20.0" text="Student Data:" textFill="#0598ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnAddstudent" layoutX="236.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #0598ff;" text="Add" textFill="WHITE" />
+                              <Button fx:id="btnDeletestudent" layoutX="421.0" layoutY="336.0" mnemonicParsing="false" onAction="#removeStudent" style="-fx-background-color: #0598ff;" text="Delete" textFill="WHITE" />
+                              <Button fx:id="BtnBack3" layoutX="16.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: transparent;">
                                  <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="24.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../image/angle-left-01.png" />
                                        </image>
@@ -46,6 +64,173 @@
                               </Button>
                            </children>
                         </AnchorPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="Pn2employee" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" stylesheets="@../style.css">
+                     <children>
+                        <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="522.0">
+                           <children>
+                              <TableView fx:id="tableEmployee" layoutX="39.0" layoutY="288.0" prefHeight="148.0" prefWidth="441.0" styleClass="table-row-cell">
+                                 <columns>
+                                    <TableColumn fx:id="columnEmployeeName" prefWidth="72.0" text="Name" />
+                                    <TableColumn fx:id="columnEmployeeLastname" onEditCommit="#editLastnameEmployee" prefWidth="87.0" text="Last name" />
+                                    <TableColumn fx:id="columnEmployeeEmail" onEditCommit="#editEmailEmployee" prefWidth="102.0" text="E-mail" />
+                                    <TableColumn fx:id="columnEmployeeUsername" prefWidth="94.0" text="Username" />
+                                    <TableColumn fx:id="columnEmployeePassword" prefWidth="85.0" text="Password" />
+                                 </columns>
+                              </TableView>
+                              <TextField fx:id="TxtName" layoutX="154.0" layoutY="67.0" prefHeight="25.0" prefWidth="223.0" promptText="Name" />
+                              <TextField fx:id="TxtLastname" layoutX="154.0" layoutY="102.0" prefHeight="25.0" prefWidth="223.0" promptText="Lastname" />
+                              <TextField fx:id="TxtEmail" layoutX="154.0" layoutY="137.0" prefHeight="25.0" prefWidth="223.0" promptText="Email" />
+                              <TextField fx:id="TxtUsername" layoutX="154.0" layoutY="172.0" prefHeight="25.0" prefWidth="222.0" promptText="Username" />
+                              <PasswordField fx:id="TxtPassword" layoutX="155.0" layoutY="207.0" prefHeight="25.0" prefWidth="220.0" promptText="Password" />
+                              <Label layoutX="155.0" layoutY="20.0" text="Employee Data:" textFill="#0598ff">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnAddemployee" layoutX="236.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #0598ff;" stylesheets="@../style.css" text="Add" textFill="WHITE" />
+                              <Button fx:id="btnRemoveemployee" layoutX="240.0" layoutY="451.0" mnemonicParsing="false" onAction="#removeEmployee" style="-fx-background-color: #0598ff;" stylesheets="@../style.css" text="Remove" textFill="WHITE" />
+                              <Button fx:id="BtnBack2" layoutX="16.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/angle-left-01.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="Pn5reports" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <ScrollPane layoutX="-4.0" prefHeight="500.0" prefWidth="526.0" stylesheets="@../style.css">
+                           <content>
+                              <AnchorPane prefHeight="959.0" prefWidth="520.0">
+                                 <children>
+                                    <Button fx:id="BtnBack5" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="48.0" style="-fx-background-color: transparent;">
+                                       <graphic>
+                                          <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../image/angle-left-01.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <TableView fx:id="tableReservationsInfo" layoutX="26.0" layoutY="106.0" prefHeight="368.0" prefWidth="464.0" stylesheets="@../style.css">
+                                      <columns>
+                                        <TableColumn fx:id="columnReservationsInfoStudent" prefWidth="131.0" text="Student" />
+                                        <TableColumn fx:id="columnReservationsInfoAppointment" minWidth="8.0" prefWidth="155.0" text="Appointment" />
+                                          <TableColumn fx:id="columnReservationsInfoDescription" prefWidth="177.0" text="Description" />
+                                      </columns>
+                                    </TableView>
+                                    <TableView fx:id="tableCycleCounter" layoutX="26.0" layoutY="555.0" prefHeight="200.0" prefWidth="218.0" stylesheets="@../style.css">
+                                      <columns>
+                                        <TableColumn fx:id="columnCycleCounterType" prefWidth="108.0" text="Cycle" />
+                                        <TableColumn fx:id="columnCycleCounterCount" prefWidth="109.0" text="Count" />
+                                      </columns>
+                                    </TableView>
+                                    <TextField fx:id="txtWeeklyIncome" layoutX="401.0" layoutY="784.0" prefHeight="27.0" prefWidth="67.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" stylesheets="@../style.css" />
+                                    <Label layoutX="291.0" layoutY="794.0" prefHeight="17.0" prefWidth="108.0" text="Week Income:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtMonthlyIncome" layoutX="401.0" layoutY="831.0" prefHeight="27.0" prefWidth="67.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" stylesheets="@../style.css" />
+                                    <Label layoutX="291.0" layoutY="841.0" prefHeight="17.0" prefWidth="108.0" text="Month Income:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtYearIncome" layoutX="401.0" layoutY="878.0" prefHeight="27.0" prefWidth="67.0" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px;" stylesheets="@../style.css" />
+                                    <Label layoutX="291.0" layoutY="888.0" prefHeight="17.0" prefWidth="108.0" text="Year Income:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="218.0" layoutY="66.0" text="Reservations:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="26.0" layoutY="535.0" prefHeight="19.0" prefWidth="109.0" text="Usage of Cycles:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TableView fx:id="tableActive" layoutX="269.0" layoutY="555.0" prefHeight="134.0" prefWidth="207.0" stylesheets="@../style.css">
+                                      <columns>
+                                        <TableColumn fx:id="columnActiveStudent" prefWidth="131.0" text="Student" />
+                                        <TableColumn fx:id="columnActiveReservation" prefWidth="63.0" text="No" />
+                                          <TableColumn fx:id="col" minWidth="0.0" prefWidth="0.0" text="Column X" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="270.0" layoutY="535.0" prefHeight="17.0" prefWidth="115.0" text="Top students:" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold Italic" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="Pn4machine" prefHeight="200.0" prefWidth="520.0" style="-fx-background-color: #ffff;">
+                     <children>
+                        <ScrollPane prefHeight="500.0" prefWidth="520.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="503.0" prefWidth="500.0" style="-fx-background-color: #ffff;">
+                                 <children>
+                                    <TableView fx:id="tableMachine" layoutX="258.0" layoutY="89.0" prefHeight="137.0" prefWidth="164.0" stylesheets="@../style.css">
+                                       <columns>
+                                          <TableColumn fx:id="columnMachineModel" onEditCommit="#editMachineModel" prefWidth="163.0" text="Model" />
+                                       </columns>
+                                    </TableView>
+                                    <TextField fx:id="txtModel" layoutX="25.0" layoutY="116.0" prefHeight="25.0" prefWidth="150.0" promptText="Model of Machine" />
+                                    <Label layoutX="155.0" layoutY="20.0" text="Machines and Cycles" textFill="#0598ff">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="btnAddMachine" layoutX="57.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #0598ff;" text="Add Machine" textFill="WHITE" />
+                                    <Button fx:id="btnRemoveMachine" layoutX="422.0" layoutY="136.0" mnemonicParsing="false" onAction="#removeMachine" prefHeight="44.0" prefWidth="36.0" style="-fx-background-color: transparent;" text="Remove machine" textFill="WHITE" wrapText="true">
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../image/trash.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
+                                    <Button fx:id="BtnBack4" layoutX="15.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="49.0" style="-fx-background-color: transparent;">
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../image/angle-left-01.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <TextField fx:id="txtType" layoutX="25.0" layoutY="249.0" prefHeight="25.0" prefWidth="150.0" promptText="Type" />
+                                    <TextField fx:id="txtDuration" layoutX="25.0" layoutY="288.0" prefHeight="25.0" prefWidth="150.0" promptText="Duration" />
+                                    <TextField fx:id="txtPrice" layoutX="25.0" layoutY="325.0" prefHeight="25.0" prefWidth="150.0" promptText="Price" />
+                                    <Button fx:id="btnAddCycle" layoutX="52.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #0598ff;" text="Add Cycle" textFill="WHITE" />
+                                    <TableView fx:id="tableCycle" layoutX="201.0" layoutY="247.0" prefHeight="203.0" prefWidth="278.0" stylesheets="@../style.css">
+                                      <columns>
+                                        <TableColumn fx:id="columnCycleType" onEditCommit="#editCycleType" prefWidth="170.66668701171875" text="Type" />
+                                          <TableColumn fx:id="columnCycleDuration" prefWidth="57.66668701171875" text="min" />
+                                          <TableColumn fx:id="columnCyclePrice" prefWidth="48.0" text="KM" />
+                                      </columns>
+                                    </TableView>
+                                     <Button fx:id="btnAddCycleOnMachine" layoutX="26.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #0598ff;" text="Add Cycle on Machine" textFill="WHITE" />
+                                    <Button fx:id="btnRemoveCycle" layoutX="49.0" layoutY="406.0" mnemonicParsing="false" onAction="#removeCycle" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #0598ff;" text="Remove Cycle" textFill="WHITE" />
+                                    <Label layoutX="171.0" layoutY="451.0" prefHeight="32.0" prefWidth="272.0" text="* Please specify Model and Cycle from tables" textFill="#908f8f" wrapText="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </Pane>
                   <Pane fx:id="Pn1admin" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
@@ -103,127 +288,6 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Button>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="Pn3student" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
-                     <children>
-                        <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="522.0">
-                           <children>
-                              <TableView fx:id="tableStudent" layoutX="32.0" layoutY="218.0" prefHeight="272.0" prefWidth="347.0">
-                                 <columns>
-                                    <TableColumn fx:id="columnStudentName" onEditCommit="#editFirstnameStudent" prefWidth="114.0" text="Name" />
-                                    <TableColumn fx:id="columnStudentLastname" onEditCommit="#editLastnameStudent" prefWidth="122.0" text="Last name" />
-                                    <TableColumn fx:id="columnStudentTelephone" onEditCommit="#editTelephoneStudent" prefWidth="110.0" text="Telephone" />
-                                 </columns>
-                              </TableView>
-                              <TextField fx:id="txtSname" layoutX="154.0" layoutY="67.0" prefHeight="25.0" prefWidth="223.0" promptText="Name" />
-                              <TextField fx:id="txtSlastname" layoutX="154.0" layoutY="102.0" prefHeight="25.0" prefWidth="223.0" promptText="Lastname" />
-                              <TextField fx:id="txtStelephone" layoutX="154.0" layoutY="137.0" prefHeight="25.0" prefWidth="223.0" promptText="Telephone" />
-                              <Label layoutX="155.0" layoutY="20.0" text="Student Data:" textFill="#0598ff">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="btnAddstudent" layoutX="236.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #0598ff;" text="Add" textFill="WHITE" />
-                              <Button fx:id="btnDeletestudent" layoutX="421.0" layoutY="336.0" mnemonicParsing="false" onAction="#removeStudent" style="-fx-background-color: #0598ff;" text="Delete" textFill="WHITE" />
-                              <Button fx:id="BtnBack3" layoutX="16.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView fitHeight="24.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/angle-left-01.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="Pn4machine" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffff;">
-                     <children>
-                        <ScrollPane prefHeight="499.0" prefWidth="517.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="528.0" style="-fx-background-color: #ffff;">
-                                 <children>
-                                    <TableView fx:id="tableMachine" layoutX="253.0" layoutY="80.0" prefHeight="137.0" prefWidth="164.0">
-                                       <columns>
-                                          <TableColumn fx:id="columnMachineModel" onEditCommit="#editMachineModel" prefWidth="163.0" text="Model" />
-                                       </columns>
-                                    </TableView>
-                                    <TextField fx:id="txtModel" layoutX="77.0" layoutY="117.0" prefHeight="25.0" prefWidth="164.0" promptText="Model of Machine" />
-                                    <Label layoutX="155.0" layoutY="20.0" text="Machines and Cycles" textFill="#0598ff">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Button fx:id="btnAddMachine" layoutX="105.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #0598ff;" text="Add Machine" textFill="WHITE" />
-                                    <Button fx:id="btnRemoveMachine" layoutX="281.0" layoutY="225.0" mnemonicParsing="false" onAction="#removeMachine" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #0598ff;" text="Remove Machine" textFill="WHITE" />
-                                    <Button fx:id="BtnBack4" layoutX="15.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="49.0" style="-fx-background-color: transparent;">
-                                       <graphic>
-                                          <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../image/angle-left-01.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                    <TextField fx:id="txtType" layoutX="25.0" layoutY="330.0" prefHeight="25.0" prefWidth="164.0" promptText="Type" />
-                                    <TextField fx:id="txtDuration" layoutX="25.0" layoutY="369.0" prefHeight="25.0" prefWidth="164.0" promptText="Duration" />
-                                    <TextField fx:id="txtPrice" layoutX="25.0" layoutY="406.0" prefHeight="25.0" prefWidth="164.0" promptText="Price" />
-                                    <Button fx:id="btnAddCycle" layoutX="52.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #0598ff;" text="Add Cycle" textFill="WHITE" />
-                                    <TableView fx:id="tableCycle" layoutX="204.0" layoutY="309.0" prefHeight="203.0" prefWidth="278.0">
-                                      <columns>
-                                        <TableColumn fx:id="columnCycleType" onEditCommit="#editCycleType" prefWidth="170.66668701171875" text="Type" />
-                                          <TableColumn fx:id="columnCycleDuration" prefWidth="57.66668701171875" text="min" />
-                                          <TableColumn fx:id="columnCyclePrice" prefWidth="50.33331298828125" text="KM" />
-                                      </columns>
-                                    </TableView>
-                                     <Button fx:id="btnAddCycleOnMachine" layoutX="38.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #0598ff;" text="Add Cycle on Machine" textFill="WHITE" />
-                                    <Button fx:id="btnRemoveCycle" layoutX="292.0" layoutY="527.0" mnemonicParsing="false" onAction="#removeCycle" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #0598ff;" text="Remove Cycle" textFill="WHITE" />
-                                    <Label layoutX="34.0" layoutY="565.0" prefHeight="32.0" prefWidth="444.0" text="* For adding Cyle on Machine please select specified Model and Cycle from tables" textFill="#908f8f" wrapText="true" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="Pn2employee" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-                     <children>
-                        <AnchorPane layoutX="-2.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="522.0">
-                           <children>
-                              <TableView fx:id="tableEmployee" layoutX="39.0" layoutY="288.0" prefHeight="148.0" prefWidth="441.0">
-                                 <columns>
-                                    <TableColumn fx:id="columnEmployeeID" prefWidth="24.0" text="#" />
-                                    <TableColumn fx:id="columnEmployeeName" prefWidth="64.0" text="Name" />
-                                    <TableColumn fx:id="columnEmployeeLastname" onEditCommit="#editLastnameEmployee" prefWidth="85.0" text="Last name" />
-                                    <TableColumn fx:id="columnEmployeeEmail" onEditCommit="#editEmailEmployee" prefWidth="110.0" text="E-mail" />
-                                    <TableColumn fx:id="columnEmployeeUsername" prefWidth="74.0" text="Username" />
-                                    <TableColumn fx:id="columnEmployeePassword" text="Password" />
-                                 </columns>
-                              </TableView>
-                              <TextField fx:id="TxtName" layoutX="154.0" layoutY="67.0" prefHeight="25.0" prefWidth="223.0" promptText="Name" />
-                              <TextField fx:id="TxtLastname" layoutX="154.0" layoutY="102.0" prefHeight="25.0" prefWidth="223.0" promptText="Lastname" />
-                              <TextField fx:id="TxtEmail" layoutX="154.0" layoutY="137.0" prefHeight="25.0" prefWidth="223.0" promptText="Email" />
-                              <TextField fx:id="TxtUsername" layoutX="154.0" layoutY="172.0" prefHeight="25.0" prefWidth="222.0" promptText="Username" />
-                              <PasswordField fx:id="TxtPassword" layoutX="155.0" layoutY="207.0" prefHeight="25.0" prefWidth="220.0" promptText="Password" />
-                              <Label layoutX="155.0" layoutY="20.0" text="Employee Data:" textFill="#0598ff">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="btnAddemployee" layoutX="236.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #0598ff;" text="Add" textFill="WHITE" />
-                              <Button fx:id="btnRemoveemployee" layoutX="240.0" layoutY="451.0" mnemonicParsing="false" onAction="#removeEmployee" style="-fx-background-color: #0598ff;" text="Remove" textFill="WHITE" />
-                              <Button fx:id="BtnBack2" layoutX="16.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: transparent;">
-                                 <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/angle-left-01.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </AnchorPane>
                      </children>
                   </Pane>
                </children>
